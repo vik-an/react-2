@@ -1,0 +1,89 @@
+// import React, { useState, useEffect } from 'react';
+
+// const LikeButton = ({ business }) => {
+//   const [liked, setLiked] = useState(false);
+
+//   // Toggle Like button
+//   const handleLike = () => {
+//     setLiked(!liked);
+
+//     // Retrieve the current items from localStorage
+//     const likedItems = JSON.parse(localStorage.getItem('likedItems')) || [];
+
+//     if (!liked) {
+//       // Add the business to localStorage if liked
+//       likedItems.push(business);
+//       localStorage.setItem('likedItems', JSON.stringify(likedItems));
+//     } else {
+//       // Remove the business if unliked
+//       const updatedItems = likedItems.filter(item => item.id !== business.id);
+//       localStorage.setItem('likedItems', JSON.stringify(updatedItems));
+//     }
+//   };
+
+//   return (
+//     <button onClick={handleLike}>
+//       {liked ? 'Unlike' : 'Like'}
+//     </button>
+//   );
+// };
+
+// const LikedList = () => {
+//   const [likedItems, setLikedItems] = useState([]);
+
+//   // Get liked items from localStorage on mount
+//   useEffect(() => {
+//     const items = JSON.parse(localStorage.getItem('likedItems')) || [];
+//     setLikedItems(items);
+//   }, []);
+
+//   return (
+//     <div>
+//       <h1>Liked Businesses</h1>
+//       {likedItems.length > 0 ? (
+//         <ul>
+//           {likedItems.map((item) => (
+//             <li key={item.id}>{item.name}</li>
+//           ))}
+//         </ul>
+//       ) : (
+//         <p>No liked businesses yet</p>
+//       )}
+//     </div>
+//   );
+// };
+
+// const App = () => {
+//   const mockBusiness = {
+//     id: 1,
+//     name: 'Business 1',
+//     service: 'Service A',
+//   };
+
+//   return (
+//     <div>
+//       <LikeButton business={mockBusiness} />
+//       <LikedList />
+//     </div>
+//   );
+// };
+
+// export default App;
+// How It Works:
+// LikeButton Component:
+
+// When the "Like" button is clicked, the handleLike function is triggered.
+// The handleLike function toggles the like state and checks the current list of liked items in localStorage.
+// If the item is being liked, it's pushed to the likedItems array in localStorage. If it's being unliked, it's removed from that array.
+// LikedList Component:
+
+// When the component mounts (useEffect), it retrieves the liked items from localStorage and sets them in the likedItems state.
+// The likedItems state is used to render a list of liked items, displaying them in an unordered list (<ul>).
+// Storage and Retrieval:
+
+// Every time an item is liked, it's added to localStorage, and every time it's unliked, it's removed from the localStorage.
+// The LikedList component reads from localStorage on component mount to get the list of liked items and display them.
+// Notes:
+// LocalStorage Handling: localStorage only stores strings, so you need to use JSON.stringify() to store arrays or objects and JSON.parse() to retrieve them.
+// Component Mounting: useEffect is used to fetch the liked items from localStorage only when the component mounts.
+// This approach allows you to store liked items when the button is clicked and display the stored items later when needed.

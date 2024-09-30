@@ -1,0 +1,34 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.purple {
+  color: rgb(122, 75, 166);
+}
+
+.small {
+  font-size: medium;
+  color: rgb(115, 128, 128);
+}
+.search {
+  color: brown;
+}
+
+.inputSection {
+  display: flex;
+
+  justify-content: center;
+}
+
+.box {
+  margin-top: 2rem;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: bisque;
+}

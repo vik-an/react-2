@@ -1,0 +1,85 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Header section */
+.headerSection {
+  background-color: #f8f9fa;
+  padding: 40px 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.headerSection h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.introText {
+  font-size: 18px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Mission section */
+.missionText {
+  font-size: 16px;
+  color: #555;
+  margin: 20px 0;
+}
+
+/* Values section */
+.valuesSection {
+  background-color: #e9ecef;
+  padding: 40px 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.valuesList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.valuesList li {
+  font-size: 18px;
+  color: #444;
+  margin: 10px 0;
+}
+
+/* Team section */
+.teamSection {
+  margin-bottom: 40px;
+}
+
+.teamGrid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.teamMember {
+  margin: 20px;
+  text-align: center;
+}
+
+.teamMember img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.teamMember h3 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.teamMember p {
+  font-size: 14px;
+  color: #666;
+}

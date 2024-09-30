@@ -1,0 +1,32 @@
+.card {
+  width: 250px;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  gap: 1rem;
+  background-color: #dcd7f3;
+  border-radius: 0.5rem;
+  border: 2px solid rgb(172, 162, 182);
+  transition: 300ms;
+
+  &:hover,
+  &.active {
+    background-color: #f7f4fd;
+    transition: 300ms;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .card {
+    width: 160px;
+    transition: 300ms;
+  }
+}
+
+.name {
+  color: rgb(44, 34, 52);
+}
