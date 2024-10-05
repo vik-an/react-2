@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./BusinessList.module.scss";
-import { FaHeart } from "react-icons/fa";
-import useLocalStorage from "./Liked";
+//import { FaHeart } from "react-icons/fa";
+
+import { useLocalStorage } from "usehooks-ts";
 import Button from "../modules/ButtonInput/Button";
+//import handleLike from "./Liked2";
 
 const BusinessCard = ({ business }) => {
   if (!business) {
@@ -20,17 +22,32 @@ const BusinessCard = ({ business }) => {
   const params = useParams();
   console.log(business);
 
-  // Use localStorage for "Liked" state
   const [Liked, setLike] = useLocalStorage(`liked-${id}`, false);
+  const [likedItems, setLikedItems] = useLocalStorage(`likedItems`, []);
 
-  // Handle like button click
-  function handleChange() {
-    const newLikedValue = !Liked; // Toggle the current state
-    setLike(newLikedValue); // Update the "Liked" state
+  //Handle like button click
+  const handleChange = (newItem) => {
+    const newLikedItem = !Liked; // Toggle the current state
+    setLike(newLikedItem); // Update the individual "Liked" state
 
-    // Save the updated state in localStorage
-    localStorage.setItem(`liked-${id}`, JSON.stringify(newLikedValue));
-  }
+    setLikedItems([...likedItems, newItem]);
+
+    if (newLikedItem) {
+      // If the business is liked, add it to the likedItems array (if it's not already there)
+      if (!likedItems.some((item) => item.id === business.id)) {
+        setLikedItems([...likedItems, business]);
+      }
+    } else {
+      // If unliked, remove the business from the likedItems array
+      const updatedItems = likedItems.filter((item) => item.id !== business.id);
+      setLikedItems(updatedItems);
+    }
+  };
+  // Use localStorage for "Liked" state
+
+  // Save the updated state in localStorage
+  //localStorage.setItem(`liked-${id}`, JSON.stringify(newLikedItem));
+  //}
 
   return (
     <div className={styles.card}>

@@ -1,7 +1,7 @@
 .name {
   display: flex;
   font-size: large;
-  color: rgb(6, 23, 39);
+  color: rgb(122, 75, 166);
 }
 
 .box {
@@ -42,19 +42,19 @@
 }
 
 .card {
-  width: 160px;
-  height: 120px;
+  width: 120px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 1px;
   background-color: #f2eefd;
   border-radius: 0.5rem;
-  //padding: 5px;
+  //   padding: 5px;
 
   &:hover {
-    background-color: #f7f4fd;
+    background-color: #d8cfe9;
     transition: 300ms;
     cursor: pointer;
   }

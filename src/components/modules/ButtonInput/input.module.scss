@@ -1,7 +1,20 @@
 .input {
-  margin: 7px;
   border-radius: 20px;
-  padding: 10px;
-  border-color: rgb(155, 153, 211);
-  width: 200px;
+  line-height: 1;
+  padding: 0.8rem 1rem;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+    background-color 100ms ease-in;
+  border: 2px solid #cdbcf4;
+  color: rgb(14, 14, 16);
+  display: block;
+  margin: 8px;
+
+  &:hover {
+    border-color: #6b4d86;
+  }
+
+  &:focus {
+    border-color: #3a2d4d;
+    background: #fff;
+  }
 }

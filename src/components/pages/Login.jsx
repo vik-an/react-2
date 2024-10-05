@@ -3,32 +3,40 @@ import Button from "../modules/ButtonInput/Button";
 import Input from "../modules/ButtonInput/Input";
 import styles from "./Form.module.scss";
 import { ROUTES } from "../../routes/consts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simple validation (just an example)
-    if (!email || !password) {
+    if (!formData.email || !formData.password) {
       setError("Both fields are required.");
       return;
     }
 
-    // You can add authentication logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
+    localStorage.setItem("LogedUser", JSON.stringify(formData));
+
+    console.log("Email:", formData.email);
+    console.log("Password:", formData.password);
 
     // Clear form
-    setEmail("");
-    setPassword("");
+    setFormData({ email: "", password: "" });
     setError("");
+
+    navigate(ROUTES.HOME);
   };
 
   return (
@@ -43,8 +51,9 @@ const LoginForm = () => {
           <Input
             type="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="Enter your email"
           />
         </div>
@@ -54,16 +63,20 @@ const LoginForm = () => {
           <Input
             type="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
             placeholder="Enter your password"
           />
         </div>
-
-        <Button type="submit">Login</Button>
-        <Button type="button" onClick={() => navigate(ROUTES.REGISTER)}>
-          Register
-        </Button>
+        <div className={styles.logSignUp}>
+          <Button type="submit" onClick={handleSubmit}>
+            Login
+          </Button>
+          <Link type="link" onClick={() => navigate(ROUTES.REGISTER)}>
+            Still not signed up?
+          </Link>
+        </div>
       </form>
     </div>
   );

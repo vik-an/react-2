@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from "react";
+import styles from "./PopularBusiness.module.scss";
 
 const PopularBusiness = () => {
-  const [items, setItems] = useState([]);
+  const [likedItems, setLikedItems] = useState([]);
 
+  //   // Get liked items from localStorage on mount
   useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem("items"));
-
-    // Check if storedItems exist and if they have a 'liked' property
-    if (storedItems && storedItems.liked === true) {
-      setItems(storedItems);
-    }
+    const items = JSON.parse(localStorage.getItem(`likedItems`, [])) || [];
+    setLikedItems(items);
   }, []);
 
   return (
-    <div>
-      <h1>Popular Businesses</h1>
-
-      {items.length > 0 ? (
-        <ul>
-          {items.map((item, index) => (
-            <li key={index}>{item.name}</li>
+    <div className={styles.layout}>
+      <h2>You Liked these Businesses </h2>
+      {likedItems.length > 0 ? (
+        <div className={styles.container}>
+          {likedItems.map((item) => (
+            <div className={styles.card}>
+              <img src={item.url} alt={item.name} className={styles.pic} />
+              <div className={styles.text}>
+                <p className={styles.BusinesTitle}>{item.name}</p>
+                <p className={styles.name}>{item.service} </p>
+                <p className={styles.name}>{item.person}</p>
+                <p className={styles.adress}>{item.address}</p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <p>No popular businesses found</p>
+        <p>No liked businesses yetes</p>
       )}
     </div>
   );

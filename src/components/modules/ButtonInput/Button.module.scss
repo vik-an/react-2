@@ -4,7 +4,7 @@
   color: rgb(243, 238, 238);
   border: none;
   border-radius: 8px;
-  font-size: 1cap;
+  font-size: 1.2cap;
   cursor: pointer;
   width: 100px;
   margin: 10px;
@@ -39,6 +39,5 @@
 @media screen and (max-width: 600px) {
   .smallScreen {
     width: 100px;
-    //margin: 20px;
   }
 }

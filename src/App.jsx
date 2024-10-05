@@ -8,7 +8,7 @@ import AboutUs from "./components/pages/aboutUs";
 import Services from "./components/pages/services";
 import Login from "./components/pages/Login";
 import SearchCategory from "./components/pages/searchCategory";
-import RegisterForm from "./components/pages/register";
+import RegisterForm from "./components/pages/Register";
 import CategoryPage from "./components/pages/CategoryPage";
 //import ErrorPage from "./components/pages/ErrorPage";
 

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import styles from "./Form.module.scss";
 import Button from "../modules/ButtonInput/Button";
 import Input from "../modules/ButtonInput/Input";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../routes/consts";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ const RegisterForm = () => {
     password: "",
   });
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,6 +28,7 @@ const RegisterForm = () => {
       setError("All fields are required.");
       return;
     }
+    localStorage.setItem("user", JSON.stringify(formData));
 
     // Simulate form submission (can be replaced with API call)
     console.log("Name:", formData.name);
@@ -33,6 +38,8 @@ const RegisterForm = () => {
     // Reset form after submission
     setFormData({ name: "", email: "", password: "" });
     setError("");
+
+    navigate(ROUTES.HOME);
   };
 
   return (
@@ -77,7 +84,9 @@ const RegisterForm = () => {
           />
         </div>
 
-        <Button type="submit">Register</Button>
+        <Button type="submit" onClick={handleSubmit}>
+          Register
+        </Button>
       </form>
     </div>
   );
