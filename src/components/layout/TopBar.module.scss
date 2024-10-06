@@ -24,8 +24,16 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  padding: 1rem 2rem;
+  padding: 0.7rem 1rem;
   border: 1px solid rgb(188, 169, 204);
+  position: fixed;
+  top: 0; /* Pin it to the top of the page */
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width of the viewport */
+
+  /* Ensure the header stays above content */
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 .link {
@@ -43,6 +51,12 @@
 .navigation {
   display: flex;
   gap: 10px;
+}
+
+.loged {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 @media screen and (max-width: 600px) {
   .app-header {

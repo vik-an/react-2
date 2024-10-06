@@ -1,39 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../modules/ButtonInput/Button";
 import Input from "../modules/ButtonInput/Input";
 import styles from "./Form.module.scss";
 import { ROUTES } from "../../routes/consts";
 import { useNavigate, Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const { login } = useContext(UserContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const [error, setError] = useState("");
 
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    login({ email, password });
 
-    if (!formData.email || !formData.password) {
-      setError("Both fields are required.");
-      return;
-    }
+    //localStorage.setItem("LogedUser", JSON.stringify(formData));
 
-    localStorage.setItem("LogedUser", JSON.stringify(formData));
-
-    console.log("Email:", formData.email);
-    console.log("Password:", formData.password);
+    // console.log("Email:", formData.email);
+    // console.log("Password:", formData.password);
 
     // Clear form
-    setFormData({ email: "", password: "" });
+
+    setEmail("");
+    setPassword("");
     setError("");
 
     navigate(ROUTES.HOME);
@@ -50,10 +44,9 @@ const LoginForm = () => {
           <label htmlFor="email">Email</label>
           <Input
             type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
           />
         </div>
@@ -62,17 +55,14 @@ const LoginForm = () => {
           <label htmlFor="password">Password</label>
           <Input
             type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
           />
         </div>
         <div className={styles.logSignUp}>
-          <Button type="submit" onClick={handleSubmit}>
-            Login
-          </Button>
+          <Button type="submit">Login</Button>
           <Link type="link" onClick={() => navigate(ROUTES.REGISTER)}>
             Still not signed up?
           </Link>

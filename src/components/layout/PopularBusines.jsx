@@ -12,7 +12,7 @@ const PopularBusiness = () => {
 
   return (
     <div className={styles.layout}>
-      <h2>You Liked these Businesses </h2>
+      <h2>You liked these companies </h2>
       {likedItems.length > 0 ? (
         <div className={styles.container}>
           {likedItems.map((item) => (

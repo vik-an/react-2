@@ -6,8 +6,19 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ROUTES } from "../../routes/consts.js";
 
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext.jsx";
+import Avatar from "../modules/Avatar.jsx";
+
 const TopBar = () => {
+  const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const Logout = () => {
+    logout();
+    navigate(ROUTES.HOME);
+  };
+
   const links = [
     {
       href: ROUTES.HOME,
@@ -37,9 +48,20 @@ const TopBar = () => {
           ))}
         </nav>
       </div>
-      <Button onClick={() => navigate(ROUTES.LOGIN)} smallScreen>
-        Login/Sign Up
-      </Button>
+      <div>
+        {user ? (
+          <div className={styles.loged}>
+            <Avatar>{user.email[0]}</Avatar>
+            <Button onClick={Logout} logout>
+              Log Out
+            </Button>
+          </div>
+        ) : (
+          <Button onClick={() => navigate(ROUTES.LOGIN)} smallScreen>
+            Login/Sign Up
+          </Button>
+        )}
+      </div>
     </header>
   );
 };

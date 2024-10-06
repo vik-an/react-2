@@ -5,12 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import React from "react";
 import Input from "../modules/ButtonInput/Input.jsx";
 
-//import { ROUTES } from "../../../Routes/consts.js";
-//import { useNavigate } from "react-router-dom";
-
 const MidBar = () => {
-  //const navigate = useNavigate();
-
   return (
     <div className={styles.main}>
       <h1>
@@ -23,7 +18,7 @@ const MidBar = () => {
       </p>
       <div className={styles.inputSection}>
         <Input placeholder="SEARCH" />
-        <Button rounded>
+        <Button rounded type="submit">
           <div>
             <CiSearch fontSize={20} />
           </div>

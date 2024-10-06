@@ -11,6 +11,8 @@ import SearchCategory from "./components/pages/searchCategory";
 import RegisterForm from "./components/pages/Register";
 import CategoryPage from "./components/pages/CategoryPage";
 //import ErrorPage from "./components/pages/ErrorPage";
+import { UserProvider } from "./context/UserContext";
+import AuthLayout from "././components/layout/AuthLayout";
 
 const router = createBrowserRouter([
   {
@@ -29,28 +31,39 @@ const router = createBrowserRouter([
         path: ROUTES.SERVICES,
         element: <Services />,
       },
-      {
-        path: ROUTES.LOGIN,
-        element: <Login />,
-      },
+
       {
         path: ROUTES.SEARCH_CATEGORY,
         element: <SearchCategory />,
       },
-      {
-        path: ROUTES.REGISTER,
-        element: <RegisterForm />,
-      },
+
       {
         path: ROUTES.CATEGORY_PAGE,
         element: <CategoryPage />,
       },
     ],
   },
+  {
+    element: <AuthLayout />,
+    children: [
+      {
+        path: ROUTES.LOGIN,
+        element: <Login />,
+      },
+      {
+        path: ROUTES.REGISTER,
+        element: <RegisterForm />,
+      },
+    ],
+  },
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
+  );
 };
 
 export default App;

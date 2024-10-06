@@ -1,0 +1,16 @@
+.rootContainer {
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  margin-top: 70px;
+}
+
+@media screen and (min-width: 1000px) {
+  .rootContainer {
+    padding: 2rem;
+    margin-top: 80px;
+  }
+}
+
+.authContainer {
+  height: calc(100vh - 117px);
+}

@@ -72,7 +72,7 @@ const BusinessCard = ({ business }) => {
         >
           {Liked ? "❤️" : "💜"}
         </Button>
-        <Button>Book Now</Button>
+        <Button smallScreen>Book Now</Button>
       </div>
     </div>
   );
