@@ -1,0 +1,3 @@
+prijungti mongo db
+gauti duomenis is login ir register
+gauti business duomenis
