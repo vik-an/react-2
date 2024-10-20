@@ -68,7 +68,7 @@ export const businessVar = [
     name: "Atmatyk",
     service: "Langų daužymas",
     person: "Skaidrius Muštukas",
-    url: "https://img.freepik.com/free-photo/medium-shot-people-cleaning-building_23-2150454559.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
+    url: "https://img.freepik.com/free-photo/portrait-man-cleaning-his-house_23-2148118408.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
     address: "Šermukšnių g. 8, Mažeikia",
   },
   {
@@ -78,7 +78,7 @@ export const businessVar = [
     name: "Tebėga",
     service: "Atkimšimas",
     person: "Rolandas Matonis",
-    url: "https://img.freepik.com/free-photo/medium-shot-people-cleaning-building_23-2150454559.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
+    url: "https://img.freepik.com/free-photo/service-maintenance-worker-repairing_23-2149176719.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
     address: "Šermukšnių g. 8, Radviliškis",
   },
   {
@@ -88,7 +88,7 @@ export const businessVar = [
     name: "Valymas",
     service: "Grindų plovimas",
     person: "Aurelijus Rosvaldas",
-    url: "https://img.freepik.com/free-photo/medium-shot-people-cleaning-building_23-2150454559.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
+    url: "https://img.freepik.com/premium-photo/cleaning-products-interior-room_441923-9353.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
     address: "Šalnos g. 8, Žaizdriai",
   },
   {
@@ -98,7 +98,7 @@ export const businessVar = [
     name: "Be dulkių",
     service: "Paviršių valymas",
     person: "Guostė Trepinaitė",
-    url: "https://img.freepik.com/free-photo/medium-shot-people-cleaning-building_23-2150454559.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
+    url: "https://img.freepik.com/free-photo/serious-brunette-asian-woman-has-tired-expression-holds-two-spray-bottles-against-clothesline_273609-47136.jpg?ga=GA1.1.1377076620.1703272892&semt=ais_hybrid",
     address: "Šermukšnių g. 8, Šiauliai",
   },
 ];

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Directory</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .category-list,
+      .business-list {
+        list-style: none;
+        padding: 0;
+      }
+      .category-list li,
+      .business-list li {
+        background: #eee;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .category-list li span,
+      .business-list li span {
+        font-weight: bold;
+      }
+      form {
+        margin-top: 20px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+      input,
+      select,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background-color: #28a745;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Business Directory</h1>
+    <div class="container">
+      <h2>Categories</h2>
+      <ul class="category-list" id="category-list"></ul>
+
+      <h2>Businesses</h2>
+      <ul class="business-list" id="business-list"></ul>
+
+      <h2>Add New Business</h2>
+      <form id="business-form">
+        <label for="name">Business Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="category">Category</label>
+        <select id="category" name="category"></select>
+
+        <label for="service">Service</label>
+        <input type="text" id="service" name="service" required />
+
+        <label for="person">Contact Person</label>
+        <input type="text" id="person" name="person" required />
+
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required />
+
+        <button type="submit">Add Business</button>
+      </form>
+    </div>
+
+    <script>
+      const categories = [
+        { id: 1, name: "Cleaning" },
+        { id: 2, name: "Repair" },
+        { id: 3, name: "Painting" },
+        { id: 4, name: "Shifting" },
+        { id: 5, name: "Plumbing" },
+        { id: 6, name: "Electric" },
+      ];
+
+      const businesses = [
+        {
+          name: "Valau už jus",
+          category: "Cleaning",
+          service: "Namų valymas po remonto",
+          person: "Antanas Antanauskas",
+          address: "Lazdynėlių 16, Vilnius",
+        },
+        {
+          name: "Spalvingas gyvenimas",
+          category: "Painting",
+          service: "Tapyba ant sienų",
+          person: "Ema Perema",
+          address: "Saltoniškių g. 30, Vilnius",
+        },
+      ];
+
+      // Populate categories
+      const categoryList = document.getElementById("category-list");
+      const categorySelect = document.getElementById("category");
+      categories.forEach((category) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${category.name}</span>`;
+        categoryList.appendChild(li);
+
+        const option = document.createElement("option");
+        option.value = category.name;
+        option.textContent = category.name;
+        categorySelect.appendChild(option);
+      });
+
+      // Populate businesses
+      const businessList = document.getElementById("business-list");
+      businesses.forEach((business) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${business.name}</span> - ${business.service} by ${business.person}, located at ${business.address} (Category: ${business.category})`;
+        businessList.appendChild(li);
+      });
+
+      // Handle form submission
+      const businessForm = document.getElementById("business-form");
+      businessForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const newBusiness = {
+          name: document.getElementById("name").value,
+          category: document.getElementById("category").value,
+          service: document.getElementById("service").value,
+          person: document.getElementById("person").value,
+          address: document.getElementById("address").value,
+        };
+
+        // Add new business to the list
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${newBusiness.name}</span> - ${newBusiness.service} by ${newBusiness.person}, located at ${newBusiness.address} (Category: ${newBusiness.category})`;
+        businessList.appendChild(li);
+
+        // Clear form
+        businessForm.reset();
+      });
+    </script>
+  </body>
+</html>
